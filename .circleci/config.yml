@@ -7,6 +7,9 @@ jobs:
       - image: mdernst/randoop-ubuntu-jdk8
     resource_class: large
 
+    environment:
+      TERM: dumb
+
     steps:
 
       - restore_cache:
@@ -480,7 +483,6 @@ jobs:
           key: gradle-v2-{{ .Branch }}-{{ checksum "build.gradle" }}
 
 workflows:
-  version: 2
   build:
     jobs:
       - nonSystemTest-jdk11
